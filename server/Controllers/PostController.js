@@ -44,3 +44,24 @@ export const updatePost = async(req,res)=>{
         res.status(500).json({message :error.message})
     }
 }
+
+// Delete A Post 
+export const deletePost = async (req,res) => {
+    const id = req.params.id;
+    const {userId} =req.body;
+    const post = await PostModel.findById(id);
+    if(post.userId === userId ){
+        try{
+            await post.deleteOne();
+            res.status(200).json({message :"Post Deleted! Successfully!"});
+        }catch(error){
+            res.status(500).json({message :error.message})
+    
+        }
+    }else{
+        res.status(403).json({message :"Access Denied!"});
+    }
+    
+}
+
+//Like and Dislike a Post
