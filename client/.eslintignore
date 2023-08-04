@@ -1,0 +1,5 @@
+build/*.js
+config/*.js
+src/components/LogoSearch/*.js
+src/components/LogoSearch/*.jsx
+bower_components/foo/*.js
